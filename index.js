@@ -5,7 +5,7 @@ let date = new Date("12/05/2016");
 
 const gbCallBack = "https://tubidaor.github.io/VideoGameDiscovery/"
 
-const gBUrl = `http://api.giantbomb.com/game/1/?`
+const gBUrl = `http://api.giantbomb.com/games/?`
 
 const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${formatDate(date)}%2C${formatDate(date)}`
 
