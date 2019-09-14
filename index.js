@@ -7,7 +7,7 @@ const gBUrl = `https://api.giantbomb.com/games/?`
 
 const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${formatDate(date)}%2C${formatDate(date)}`
 
-let gbUrlString = gBUrl + "api_key=" + giantBombAPI + "&" + "filter=original_release_date:" + formatDate(date) + "&" + "format=jsonp" + "&" + "callback=jsonpcallback"
+let gbUrlString = gBUrl + "api_key=" + giantBombAPI + "&" + "filter=original_release_date:" + formatDate(date) + "&" + "format=jsonp" + "&" + "json_callback=jsonpcallback"
 
 function formatDate(date) {
   let month = (date.getMonth() + 1);
