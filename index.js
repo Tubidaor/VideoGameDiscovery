@@ -5,11 +5,11 @@ let date = new Date("12/05/2016");
 
 const gbCallBack = "https://tubidaor.github.io/VideoGameDiscovery/"
 
-const gBUrl = `http://api.giantbomb.com/game/1/?api_key=${giantBombAPI}&format=jsonp&json_callback=${gbCallBack}`
+const gBUrl = `http://api.giantbomb.com/game/1/?`
 
 const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${formatDate(date)}%2C${formatDate(date)}`
 
-let gbUrlString = gBUrl + "?filter=original_release_date:" + formatDate(date) + "&format=json" + "&" + "api_key=" + giantBombAPI
+let gbUrlString = gBUrl + "api_key=" + giantBombAPI + "&" + "filter=original_release_date:" + formatDate(date) + "&" + `format=jsonp&json_callback=${gbCallBack}` 
 
 function formatDate(date) {
   let month = (date.getMonth() + 1);
