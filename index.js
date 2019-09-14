@@ -3,7 +3,9 @@ const giantBombAPI = "5841ac31e4fdccc68c350d2280fc3fe3992c1d08"
 
 let date = new Date("12/05/2016");
 
-const gBUrl = `https://www.giantbomb.com/api/games/`
+const gbCallBack = "https://tubidaor.github.io/VideoGameDiscovery/"
+
+const gBUrl = `http://api.giantbomb.com/game/1/?api_key=${giantBombAPI}&format=jsonp&json_callback=${gbCallBack}`
 
 const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${formatDate(date)}%2C${formatDate(date)}`
 
@@ -34,14 +36,14 @@ function getRawg() {
   .then(responseJson => console.log(responseJson));
 }
 
-const options = {
-  headers: new Headers({
-    Origin: "https://tubidaor.github.io/VideoGameDiscovery/"
-  })
-}
+// const options = {
+//   headers: new Headers({
+//     Origin: https://tubidaor.github.io/VideoGameDiscovery/
+//   })
+// }
 function getGb() {
   console.log(gbUrlString)
-  fetch(gbUrlString, options)
+  fetch(gbUrlString)
   .then(response => response.json())
   .then(responseJson => console.log(responseJson));
 }
