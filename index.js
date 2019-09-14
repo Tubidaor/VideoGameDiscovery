@@ -36,7 +36,7 @@ function getRawg() {
 
 const options = {
   headers: new Headers({
-    "Access-Control-Allow-Origin": "https://tubidaor.github.io/VideoGameDiscovery/"
+    Origin: "https://tubidaor.github.io/VideoGameDiscovery/"
   })
 }
 function getGb() {
