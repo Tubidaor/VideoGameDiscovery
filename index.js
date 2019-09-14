@@ -3,8 +3,6 @@ const giantBombAPI = "5841ac31e4fdccc68c350d2280fc3fe3992c1d08"
 
 let date = new Date("12/05/2016");
 
-const gbCallBack = "https://tubidaor.github.io/VideoGameDiscovery/"
-
 const gBUrl = `http://api.giantbomb.com/games/?`
 
 const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${formatDate(date)}%2C${formatDate(date)}`
@@ -37,13 +35,12 @@ function getRawg() {
 }
 
 
-function jsonpcallback(data) {
+$(function jsonpcallback(data) {
   console.log(data);
-}
+});
 
 let script = document.createElement('script');
 script.src = gbUrlString
 document.getElementsByTagName('head')[0].appendChild(script);
 
 $(getRawg)
-$(getGb)
