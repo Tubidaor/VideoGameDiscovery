@@ -3,7 +3,7 @@ const giantBombAPI = "5841ac31e4fdccc68c350d2280fc3fe3992c1d08"
 
 let date = new Date("12/05/2016");
 
-const gBUrl = `http://api.giantbomb.com/games/?`
+const gBUrl = `https://api.giantbomb.com/games/?`
 
 const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${formatDate(date)}%2C${formatDate(date)}`
 
