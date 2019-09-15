@@ -36,12 +36,16 @@ function getRawg() {
 
 let wolverine = "spider-man"
 
-$(document).ready(function(){
-  $.ajax({
-    url: `https://www.giantbomb.com/api/games/?filter=name:${wolverine}`,
-    type: "get",
-    data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamer" },
-    dataType: "jsonp"
+$(document).ready(function gameSearch(){
+  $('form').on('click', '.gsButton', function(event) {
+    event.preventDefault();
+    let gameTitle = $('.gameSearch').val()
+    $.ajax({
+      url: `https://www.giantbomb.com/api/games/?filter=name:${gameTitle}`,
+      type: "get",
+      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamer" },
+      dataType: "jsonp"
+    });
   });
 });
 
@@ -49,7 +53,7 @@ function gamer(data) {
 console.log(data.results[0].name);
 }
 
-$(document).ready(function(){
+$(document).ready(function randomStart(){
   $.ajax({
     url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
     type: "get",
@@ -71,19 +75,19 @@ function gamerReleaseDate(data) {
 console.log(data.results[0].name);
 }
 
-$(document).ready(function() {
-  console.log("form ran")
-$('form').submit(function(event) {
-  event.preventDefault();
-  let character = $('.chSearch').val();
-  console.log(character)
-  $.ajax({
-    url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
-    type: "get",
-    data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerCharacter" },
-    dataType: "jsonp"
+$(document).ready(function characterSearch() {
+  console.log("character form ran")
+  $('form').on('click', '.chButton', function(event) {
+    event.preventDefault();
+    let character = $('.chSearch').val();
+    console.log(character)
+    $.ajax({
+      url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
+      type: "get",
+      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerCharacter" },
+      dataType: "jsonp"
+    });
   });
-});
 });
   
 function gamerCharacter(data) {
