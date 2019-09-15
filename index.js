@@ -34,24 +34,63 @@ function getRawg() {
   .then(responseJson => console.log(responseJson));
 }
 
-let wolverine = "spider-man"
 
 $(document).ready(function gameSearch(){
   $('form').on('click', '.gsButton', function(event) {
     event.preventDefault();
     let gameTitle = $('.gameSearch').val()
     $.ajax({
-      url: `https://www.giantbomb.com/api/games/?filter=name:${gameTitle}`,
+      url: `https://www.giantbomb.com/api/search/`,
       type: "get",
-      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamer" },
+      data: {api_key : giantBombAPI, format : "jsonp", resources: "game", query: `${gameTitle}`, json_callback : "gamer"},
       dataType: "jsonp"
     });
   });
 });
 
 function gamer(data) {
-console.log(data.results[0].name);
+  console.log(data.results[0].guid);
+  const gameID = data.results[0].guid
+  console.log(gameID);
+  $(document).ready(function() {
+    console.log("doc ready ran");
+    $('form').on('click', '.gsButton', function(event) {
+      event.preventDefault();
+      console.log(gameID+"gameID");
+      $.ajax({
+        url: `https://www.giantbomb.com/api/game/${gameID}/`,
+        type: "get",
+        data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerID"},
+        dataType: "jsonp"
+      });
+    });
+  });
 }
+
+function gamerID(data) {
+  $('.games').empty();
+    $('.games').append(
+      `<h2>${data.results.name}</h2>
+      <img src=${data.results.image.original_url}>`
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function randomStart(){
   $.ajax({
@@ -67,7 +106,7 @@ function gamerReleaseDate(data) {
     $('.games').append(
       `<div>
         <h2>${data.results[i].name}</h2>
-        <img src=${data.results[i].image.screen_url}>
+        <img src=${data.results[i].image.original_url}>
         <p>${data.results[i].deck}</p>
         <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
       </div>`)
