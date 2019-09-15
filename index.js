@@ -2,11 +2,7 @@ const giantBombAPI = "5841ac31e4fdccc68c350d2280fc3fe3992c1d08"
 
 const gBUrl = `https://api.giantbomb.com/games/?`
 
-
-// const rawgUrl = `https://api.rawg.io/api/games?ordering=-added&dates=${randomDate(new Date("12/05/1983"), new Date())}%2C${formatDate(new Date())}`
-
-let gbUrlString = gBUrl + "filter=name:wolverine" + "&"+ "api_key=" + giantBombAPI + "&"  + "format=jsonp"
-
+const rawgUrl = "https://api.rawg.io/api/games/grand-theft-auto-v/suggested"
 
 function randomDate(start, end) {
   let random =  new Date(Math.round(Math.random() * (end - start)));
@@ -37,7 +33,9 @@ function getRawg() {
   .then(response => response.json())
   .then(responseJson => console.log(responseJson));
 }
+
 let wolverine = "spider-man"
+
 $(document).ready(function(){
   $.ajax({
     url: `https://www.giantbomb.com/api/games/?filter=name:${wolverine}`,
@@ -60,6 +58,16 @@ $(document).ready(function(){
   });
 });
 function gamerReleaseDate(data) {
+  $('.games').empty();
+  for (let i = 0; i < data.results.length; i++) {
+    $('.games').append(
+      `<div>
+        <h2>${data.results[i].name}</h2>
+        <img src=${data.results[i].image.screen_url}>
+        <p>${data.results[i].deck}</p>
+        <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+      </div>`)
+  }
 console.log(data.results[0].name);
 }
 
