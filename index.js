@@ -68,81 +68,103 @@ function gamer(data) {
 }
 
 function gamerID(data) {
-  $('.games').empty();
-    $('.games').append(
-      `<h2>${data.results.name}</h2>
-      <img src=${data.results.image.original_url}>`
-  );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function randomStart(){
-  $.ajax({
-    url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
-    type: "get",
-    data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerReleaseDate"},
-    dataType: "jsonp"
-  });
-});
-function gamerReleaseDate(data) {
-  $('.games').empty();
-  for (let i = 0; i < data.results.length; i++) {
-    $('.games').append(
-      `<div>
-        <h2>${data.results[i].name}</h2>
-        <img src=${data.results[i].image.original_url}>
-        <p>${data.results[i].deck}</p>
-        <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
-      </div>`)
+  function consoles(data){
+    let array = [];
+    for (let i = 0; i < data.results.platforms.length; i++){
+      array.push(data.results.platforms[i].name);
+    }
+    console.log(array);
+    return array;
   }
-console.log(data.results[0].name);
-}
 
-$(document).ready(function characterSearch() {
-  console.log("character form ran")
-  $('form').on('click', '.chButton', function(event) {
-    event.preventDefault();
-    let character = $('.chSearch').val();
-    console.log(character)
-    $.ajax({
-      url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
-      type: "get",
-      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerCharacter" },
-      dataType: "jsonp"
-    });
-  });
-});
+  $('.games').empty();
+  $('.games').append(
+    `<h2>${data.results.name}</h2>
+    <img src=${data.results.image.original_url}>
+    <p>${data.results.deck}</p>
+    <p>${data.results.original_release_date}</p>
+    <p>${consoles(data)}</p>
+    <p>${data.results.developers[0].name}</p>
+    `
+    );
+  }
   
-function gamerCharacter(data) {
-  console.log(data.results[0].name);
-  $('.games').empty();
-  for (let i = 0; i < data.results.length; i++) {
-    $('.games').append(
-      `<div>
-        <h2>${data.results[i].name}</h2>
-        <h3>${data.results[i].real_name}</h3>
-        <img src=${data.results[i].image.screen_url}>
-        <p>${data.results[i].deck}</p>
-        <p>${data.results[i].birthday}</p>
-        <p>${data.results[i].first_appeared_in_game.name}</p>
-      </div>`)
+  
+  $('.videos').empty();
+    for (let i = 0; i < 6; i++){
+      $('.videos').append(
+        `<iframe width="420" height="315"
+          src="${data.results.videos[i].site_detail_url}">
+        </frame>`
+      )
   }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $(document).ready(function randomStart(){
+//   $.ajax({
+//     url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
+//     type: "get",
+//     data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerReleaseDate"},
+//     dataType: "jsonp"
+//   });
+// });
+// function gamerReleaseDate(data) {
+//   $('.games').empty();
+//   for (let i = 0; i < data.results.length; i++) {
+//     $('.games').append(
+//       `<div>
+//         <h2>${data.results[i].name}</h2>
+//         <img src=${data.results[i].image.original_url}>
+//         <p>${data.results[i].deck}</p>
+//         <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+//       </div>`)
+//   }
+// console.log(data.results[0].name);
+// }
+
+// $(document).ready(function characterSearch() {
+//   console.log("character form ran")
+//   $('form').on('click', '.chButton', function(event) {
+//     event.preventDefault();
+//     let character = $('.chSearch').val();
+//     console.log(character)
+//     $.ajax({
+//       url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
+//       type: "get",
+//       data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerCharacter" },
+//       dataType: "jsonp"
+//     });
+//   });
+// });
+  
+// function gamerCharacter(data) {
+//   console.log(data.results[0].name);
+//   $('.games').empty();
+//   for (let i = 0; i < data.results.length; i++) {
+//     $('.games').append(
+//       `<div>
+//         <h2>${data.results[i].name}</h2>
+//         <h3>${data.results[i].real_name}</h3>
+//         <img src=${data.results[i].image.screen_url}>
+//         <p>${data.results[i].deck}</p>
+//         <p>${data.results[i].birthday}</p>
+//         <p>${data.results[i].first_appeared_in_game.name}</p>
+//       </div>`)
+//   }
+// }
 
 $(getRawg);
