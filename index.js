@@ -71,21 +71,35 @@ function gamerReleaseDate(data) {
 console.log(data.results[0].name);
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
+  console.log("form ran")
+$('form').submit(function(event) {
+  event.preventDefault();
+  let character = $('.chSearch').val();
+  console.log(character)
   $.ajax({
-    url: `https://www.giantbomb.com/api/characters/?filter=name:wolverine`,
+    url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
     type: "get",
     data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerCharacter" },
     dataType: "jsonp"
   });
 });
-
+});
+  
 function gamerCharacter(data) {
-  console.log(data.results[0].name)
-
+  console.log(data.results[0].name);
+  $('.games').empty();
+  for (let i = 0; i < data.results.length; i++) {
+    $('.games').append(
+      `<div>
+        <h2>${data.results[i].name}</h2>
+        <h3>${data.results[i].real_name}</h3>
+        <img src=${data.results[i].image.screen_url}>
+        <p>${data.results[i].deck}</p>
+        <p>${data.results[i].birthday}</p>
+        <p>${data.results[i].first_appeared_in_game.name}</p>
+      </div>`)
+  }
 }
 
-
-
-$(getRawg)
-
+$(getRawg);
