@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+.discover {
+  color: #d70c17;
+  font-size: 30px;
+}
+
+.games {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.results {
+  width: 100%;
+  border: 20px solid #d70c17;
+  border-radius: 20px;
+  background-color: #d70c17;
+  margin: 10px;
+  border: 20px solid #d70c17;
+  color: #000000;
+}
+
+.results img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}

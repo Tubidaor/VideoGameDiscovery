@@ -14,17 +14,22 @@ function formatDate(date) {
   let month2 = (date.getMonth() + 3);
   let day = date.getDate();
   let year = date.getFullYear();
+  let year2 = date.getFullYear();
     if (month < 10) {
       month = "0" + month;
     }
     if (month2 < 10) {
       month2 = "0" + month2;
     }
+    if (month2 > 12) {
+      month2 = "02"
+      year2 = year2 + 1;
+    }
     if (day < 10) {
       day = "0" + day;
     }
-  console.log([year, month, day].join("-") + "|" + [year,month2, day].join("-"))
-  return ([year, month, day].join("-")) + "|" + ([year,month2, day].join("-"));
+  console.log([year, month, day].join("-") + "|" + [year2,month2, day].join("-"))
+  return ([year, month, day].join("-")) + "|" + ([year2,month2, day].join("-"));
 }
 
 function getRawg(gameslike) {
@@ -45,7 +50,7 @@ function display(responseJson) {
   for (let i = 0; i < responseJson.results.length; i++) {
     if (responseJson.results[i].clip !== null ) {
     $('.games').append(
-      `<div>
+      `<div class="results">
         <h2>${responseJson.results[i].name}</h2>
         <img src="${responseJson.results[i].background_image}">
         <p>${responseJson.results[i].metacritic}</p>
@@ -157,7 +162,7 @@ function gamerReleaseDate(data) {
   $('.games').empty();
   for (let i = 0; i < data.results.length; i++) {
     $('.games').append(
-      `<div>
+      `<div class="results">
         <h2>${data.results[i].name}</h2>
         <img src=${data.results[i].image.original_url}>
         <p>${data.results[i].deck}</p>
@@ -187,7 +192,7 @@ function gamerCharacter(data) {
   $('.videos').empty();
   for (let i = 0; i < data.results.length; i++) {
     $('.games').append(
-      `<div>
+      `<div class="results">
         <h2>${data.results[i].name}</h2>
         <h3>${data.results[i].real_name}</h3>
         <img src=${data.results[i].image.screen_url}>
@@ -226,7 +231,7 @@ function random(data) {
   $('.games').empty();
   for (let i = 0; i < data.results.length; i++) {
     $('.games').append(
-      `<div>
+      `<div class="results">
         <h2>${data.results[i].name}</h2>
         <img src=${data.results[i].image.original_url}>
         <p>${data.results[i].deck}</p>
