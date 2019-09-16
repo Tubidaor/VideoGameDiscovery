@@ -41,6 +41,7 @@ function getRawg(gameslike) {
 
 function display(responseJson) {
   $('.games').empty();
+  $('.videos').empty();
   for (let i = 0; i < responseJson.results.length; i++) {
     if (responseJson.results[i].clip !== null ) {
     $('.games').append(
@@ -50,7 +51,7 @@ function display(responseJson) {
         <p>${responseJson.results[i].metacritic}</p>
         <p>${responseJson.results[i].playtime}</p>
         <video controls>
-          <source src="${responseJson.results[i].clip.clips.full}" type="video/mp4">
+          <source src="${responseJson.results[i].clip.clips.full}">
         </video>
         <p>${responseJson.results[i].short_description}</p>
         
@@ -99,7 +100,6 @@ function gamerID(data) {
     console.log(array);
     return array;
   }
-
   $('.games').empty();
   $('.games').append(
     `<h2>${data.results.name}</h2>
@@ -134,6 +134,7 @@ function gamerID(data) {
   function videoAdd(data) {
     $('.videos').empty();
     for (let i = 0; data.results.length; i++) {
+      if (data.results[i].name !== null){
           $('.videos').append(
             `<h2>${data.results[i].name}</h2>
             <iframe
@@ -141,6 +142,7 @@ function gamerID(data) {
             </frame>`
           );
       }
+    }
   }
   
 $(document).ready(function randomStart(){
@@ -162,7 +164,6 @@ function gamerReleaseDate(data) {
         <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
       </div>`)
   }
-console.log(data.results[0].name);
 }
 
 $(document).ready(function characterSearch() {
@@ -183,6 +184,7 @@ $(document).ready(function characterSearch() {
 function gamerCharacter(data) {
   console.log(data.results[0].name);
   $('.games').empty();
+  $('.videos').empty();
   for (let i = 0; i < data.results.length; i++) {
     $('.games').append(
       `<div>
@@ -208,4 +210,29 @@ function likeGames() {
     getRawg(gameslike);
   });
 }
+
+$(document).ready(function explore(){
+  $('.games').submit(event => {
+    event.preventDefault();
+    $.ajax({
+      url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
+      type: "get",
+      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "random"},
+      dataType: "jsonp"
+    });
+  });
+});
+function random(data) {
+  $('.games').empty();
+  for (let i = 0; i < data.results.length; i++) {
+    $('.games').append(
+      `<div>
+        <h2>${data.results[i].name}</h2>
+        <img src=${data.results[i].image.original_url}>
+        <p>${data.results[i].deck}</p>
+        <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+      </div>`)
+  }
+}
+
  $(likeGames);
