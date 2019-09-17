@@ -150,24 +150,30 @@ function gamerID(data) {
     }
   }
   
-$(document).ready(function randomStart(){
+$(document).ready(randomStart());
+  
+function randomStart(){
   $.ajax({
     url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
     type: "get",
     data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerReleaseDate"},
     dataType: "jsonp"
   });
-});
+}
 function gamerReleaseDate(data) {
-  $('.games').empty();
-  for (let i = 0; i < data.results.length; i++) {
-    $('.games').append(
-      `<div class="results">
-        <h2>${data.results[i].name}</h2>
-        <img src=${data.results[i].image.original_url}>
-        <p>${data.results[i].deck}</p>
-        <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
-      </div>`)
+  if (data.results.length < 20) {
+    $(document).ready(randomStart());
+  } else {
+    $('.games').empty();
+    for (let i = 0; i < data.results.length; i++) {
+      $('.games').append(
+        `<div class="results">
+          <h2>${data.results[i].name}</h2>
+          <img src=${data.results[i].image.original_url}>
+          <p>${data.results[i].deck}</p>
+          <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+        </div>`)
+    }
   }
 }
 
@@ -228,16 +234,20 @@ $(document).ready(function explore(){
   });
 });
 function random(data) {
-  $('.games').empty();
-  for (let i = 0; i < data.results.length; i++) {
-    $('.games').append(
-      `<div class="results">
-        <h2>${data.results[i].name}</h2>
-        <img src=${data.results[i].image.original_url}>
-        <p>${data.results[i].deck}</p>
-        <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
-      </div>`)
+  if (data.results.length < 20) {
+    $(document).ready(randomStart());
+  } else {
+    $('.games').empty();
+    for (let i = 0; i < data.results.length; i++) {
+      $('.games').append(
+        `<div class="results">
+          <h2>${data.results[i].name}</h2>
+          <img src=${data.results[i].image.original_url}>
+          <p>${data.results[i].deck}</p>
+          <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+        </div>`)
+    }
   }
 }
 
- $(likeGames);
+$(likeGames);
