@@ -1,25 +1,63 @@
 * {
   box-sizing: border-box;
+  
 }
+/* #f24000 orange red
+#06050a navy blue
+#009ccc baby blue
+#e9e5e6 white
+#18222e black */
 
+body:before, body:after {
+  content: "";
+  position: fixed;
+  background: #18222e;
+  left: 0;
+  right: 0;
+  height: 30px;
+}
+body:before {
+  top: 0;
+}
+body:after {
+  bottom: 0;
+}
+body {
+  border-left: 30px solid #18222e;
+  border-right: 30px solid #18222e; 
+  margin: 0px;
+  background-color: #18222e; 
+}
 .discover {
   color: #d70c17;
   font-size: 30px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 10px #009ccc;
+  border-radius: 28px;
 }
 
+section {
+  margin-left:auto;
+  margin-right: auto;
+}
 .games {
   width: 100%;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .results {
   width: 100%;
-  border: 20px solid #d70c17;
   border-radius: 20px;
   background-color: #d70c17;
-  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
   border: 20px solid #d70c17;
   color: #000000;
+
 }
 
 .results img {
