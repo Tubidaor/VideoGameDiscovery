@@ -168,10 +168,9 @@ function gamerReleaseDate(data) {
     for (let i = 0; i < data.results.length; i++) {
       $('.games').append(
         `<div class="results">
-          <h2>${data.results[i].name}</h2>
           <img src=${data.results[i].image.original_url}>
           <p>${data.results[i].deck}</p>
-          <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+          <p><a href="${data.results[i].site_detail_url}" target="_blank"> See more details about ${data.results[i].name}</a> </p>
         </div>`)
     }
   }
@@ -241,10 +240,9 @@ function random(data) {
     for (let i = 0; i < data.results.length; i++) {
       $('.games').append(
         `<div class="results">
-          <h2>${data.results[i].name}</h2>
           <img src=${data.results[i].image.original_url}>
           <p>${data.results[i].deck}</p>
-          <p>Game Rating:${data.results[i].original_game_rating} Release Date:${data.results[i].original_release_date}</p>
+          <p><a href="${data.results[i].site_detail_url} target="_blank">See more details about ${data.results[i].name} </a></p>
         </div>`)
     }
   }
