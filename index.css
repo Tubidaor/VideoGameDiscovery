@@ -46,7 +46,7 @@ body {
   background-color: #e9e5e6;
 }
 
-.discover:before {
+.discover::before {
   content: " ";
   position: absolute;
   z-index: 0;
@@ -58,7 +58,7 @@ body {
   border-radius: 66px;
 }
 
-.discover:after {
+.discover::after {
   content: " ";
   position: absolute;
   z-index: 0;
@@ -96,6 +96,7 @@ section {
   margin-right: auto;
   border: 20px solid #f24000;
   color: #0c1029;
+  padding: 30px;
 
 }
 
