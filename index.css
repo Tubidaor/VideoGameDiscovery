@@ -111,13 +111,8 @@ section {
   margin-right: auto;
   border: 20px solid #f24000;
   color: #0c1029;
-<<<<<<< HEAD
-  padding: 30px;
-
-=======
   z-index: 1;
   padding: 30px;
->>>>>>> Styling
 }
 
 .results:before {
