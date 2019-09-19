@@ -169,8 +169,8 @@ function gamerReleaseDate(data) {
       $('.games').append(
         `<div class="results">
           <img src=${data.results[i].image.original_url}>
-          <p>${data.results[i].deck}</p>
-          <p><a href="${data.results[i].site_detail_url}" target="_blank"> See more details about ${data.results[i].name}</a> </p>
+          <p>${data.results[i].deck || ""}</p>
+          <p><a href="${data.results[i].site_detail_url || ""}" target="_blank"> See more details about ${data.results[i].name}</a> </p>
         </div>`)
     }
   }
