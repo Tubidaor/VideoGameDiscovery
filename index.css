@@ -31,10 +31,23 @@ body {
   background-color: #e9e5e6; 
 }
 
+body.main {
+  width:1300px;
+  margin:0 auto;
+}
+h1 {
+  text-align: center;
+  margin-top: -30px;
+  font-size: 50px;
+}
+#character {
+  margin-top: -25px;
+  margin-left: 16px;
+}
 .discover {
-  width: 90%;
+  width: 800px;
   position: relative;
-  color: #f24000;
+  color: #0c1029;
   font-size: 42px;
   margin-top: 100px;
   margin-left: auto;
@@ -44,12 +57,13 @@ body {
   font-weight: bolder;
   padding: 30px;
   background-color: #e9e5e6;
+  z-index: 1;
 }
 
 .discover::before {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -44px;
   left: -44px;
   right: -44px;
@@ -61,7 +75,7 @@ body {
 .discover::after {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -68px;
   left: -68px;
   right: -68px;
@@ -84,18 +98,20 @@ section {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .results {
   position: relative;
   width: 80%;
-  border-radius: 44px;
+  border-radius: 40px;
   background-color: #e9e5e6;
   margin-top: 110px;
   margin-left: auto;
   margin-right: auto;
   border: 20px solid #f24000;
   color: #0c1029;
+<<<<<<< HEAD
   padding: 30px;
 
 =======
@@ -107,7 +123,7 @@ section {
 .results:before {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -44px;
   left: -44px;
   right: -44px;
@@ -117,10 +133,9 @@ section {
 }
 
 .results:after {
->>>>>>> Styling
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -68px;
   left: -68px;
   right: -68px;
@@ -129,11 +144,67 @@ section {
   border-radius: 90px;
 }
 
-
-
-
 .results img {
   width: 100%;
   height: auto;
   border-radius: 20px;
+}
+
+a, .Button {
+  cursor: pointer;
+}
+
+.Button {
+  font-size: 28px;
+  background-color: #f24000;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.Search {
+  border: solid 2px #009ccc;
+  font-size: 24px;
+  width: 170px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  left: 0px;
+}
+
+footer div {
+  background-color: #f24000;
+  width: 30px;
+  height: 60px;
+  color: #0c1029;
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#character, #gameTitle, #simGames{
+  display: flex;
+  justify-content: space-between;
+}
+
+#explore {
+  margin-bottom: -20px;
+  display: flex;
+  justify-content: center;
+}
+
+#simGames {
+  margin-left: -11px;
+}
+
+form {
+  margin-top: 4px;
+}
+
+.explore.Button {
+  margin-left: 12px;
 }
