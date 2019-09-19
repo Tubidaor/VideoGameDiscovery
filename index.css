@@ -34,7 +34,7 @@ body {
 .discover {
   width: 90%;
   position: relative;
-  color: #f24000;
+  color: #0c1029;
   font-size: 42px;
   margin-top: 100px;
   margin-left: auto;
@@ -44,12 +44,13 @@ body {
   font-weight: bolder;
   padding: 30px;
   background-color: #e9e5e6;
+  z-index: 1;
 }
 
 .discover:before {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -44px;
   left: -44px;
   right: -44px;
@@ -61,7 +62,7 @@ body {
 .discover:after {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -68px;
   left: -68px;
   right: -68px;
@@ -84,6 +85,7 @@ section {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .results {
@@ -96,13 +98,14 @@ section {
   margin-right: auto;
   border: 20px solid #f24000;
   color: #0c1029;
-
+  z-index: 1;
+  padding: 30px;
 }
 
 .results:before {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -44px;
   left: -44px;
   right: -44px;
@@ -114,7 +117,7 @@ section {
 .results:after {
   content: " ";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: -68px;
   left: -68px;
   right: -68px;
@@ -123,11 +126,25 @@ section {
   border-radius: 90px;
 }
 
-
-
-
 .results img {
   width: 100%;
   height: auto;
   border-radius: 20px;
 }
+
+a, .Button {
+  cursor: pointer;
+}
+
+.Button {
+  font-size: 30px;
+  background-color: #009ccc;
+  border-radius: 16px;
+  padding: 2px;
+}
+
+.Search {
+  border: solid 2px #f24000;
+}
+/* #f24000 orange red
+#0c1029 navy blue
