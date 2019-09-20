@@ -162,6 +162,9 @@ function randomGames(data) {
   console.log(data.results[Math.random * data.results.length])
     $('.games').empty();
     for (let i = 0; i < 40; i++) {
+      if (data.results[i].image.original_url.includes("default") === true) {
+        i++
+      } else {
       $('.games').append(
         `<div class="results">
           <img src=${data.results[i].image.original_url}>
@@ -169,6 +172,7 @@ function randomGames(data) {
           <p><a href="${data.results[i].site_detail_url || ""}" target="_blank"> See more details about ${data.results[i].name}</a> </p>
         </div>`
       );
+    }
   }
 }
 
