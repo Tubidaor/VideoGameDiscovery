@@ -145,6 +145,11 @@ section {
   border-radius: 20px;
 }
 
+.results video {
+  width: 100%;
+  border-radius: 20px;
+}
+
 a, .Button {
   cursor: pointer;
 }

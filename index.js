@@ -11,7 +11,7 @@ function randomDate(start, end) {
 
 function formatDate(date) {
   let month = (date.getMonth() + 1);
-  let month2 = (date.getMonth() + 3);
+  let month2 = (date.getMonth() + 1);
   let day = date.getDate();
   let year = date.getFullYear();
   let year2 = date.getFullYear();
@@ -21,13 +21,10 @@ function formatDate(date) {
     if (month2 < 10) {
       month2 = "0" + month2;
     }
-    if (month2 > 12) {
-      month2 = "01"
-      year2 = year2 + 1;
-    }
     if (day < 10) {
       day = "0" + day;
     }
+    year2 = year2 + 1
   console.log([year, month, day].join("-") + "|" + [year2,month2, day].join("-"))
   return ([year, month, day].join("-")) + "|" + ([year2,month2, day].join("-"));
 }
@@ -156,23 +153,22 @@ function randomStart(){
   $.ajax({
     url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
     type: "get",
-    data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerReleaseDate"},
+    data: {api_key : giantBombAPI, format : "jsonp", json_callback : "randomGames"},
     dataType: "jsonp"
   });
 }
-function gamerReleaseDate(data) {
-  if (data.results.length < 20) {
-    $(document).ready(randomStart());
-  } else {
+function randomGames(data) {
+  data.results[Math.random() * data.results.length]; 
+  console.log(data.results[Math.random * data.results.length])
     $('.games').empty();
-    for (let i = 0; i < data.results.length; i++) {
+    for (let i = 0; i < 40; i++) {
       $('.games').append(
         `<div class="results">
           <img src=${data.results[i].image.original_url}>
           <p>${data.results[i].deck || ""}</p>
           <p><a href="${data.results[i].site_detail_url || ""}" target="_blank"> See more details about ${data.results[i].name}</a> </p>
-        </div>`)
-    }
+        </div>`
+      );
   }
 }
 
@@ -229,25 +225,10 @@ $(document).ready(function explore(){
     $.ajax({
       url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
       type: "get",
-      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "random"},
+      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "randomGames"},
       dataType: "jsonp"
     });
   });
 });
-function random(data) {
-  if (data.results.length < 20) {
-    $(document).ready(randomStart());
-  } else {
-    $('.games').empty();
-    for (let i = 0; i < data.results.length; i++) {
-      $('.games').append(
-        `<div class="results">
-          <img src=${data.results[i].image.original_url}>
-          <p>${data.results[i].deck}</p>
-          <p><a href="${data.results[i].site_detail_url} target="_blank">See more details about ${data.results[i].name} </a></p>
-        </div>`);
-    }
-  }
-}
 
 $(likeGames);
