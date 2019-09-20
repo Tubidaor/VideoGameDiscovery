@@ -31,7 +31,8 @@ body {
   border-left: 30px solid #18222e;
   border-right: 30px solid #18222e; 
   margin: 0px;
-  background-color: #e9e5e6; 
+  background-color: #e9e5e6;
+  width: 100%; 
 }
 
 body.main {

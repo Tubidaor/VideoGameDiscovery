@@ -185,27 +185,42 @@ $(document).ready(function characterSearch() {
     $.ajax({
       url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
       type: "get",
-      data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerCharacter" },
-      dataType: "jsonp"
+      data: {api_key : giantBombAPI, format : "jsonp", json_callback: "gamerCharacter"},
+      dataType: "jsonp",
     });
   });
 });
   
 function gamerCharacter(data) {
-  console.log(data.results[0].name);
+  // console.log(data.results[0].name);
   $('.games').empty();
   $('.videos').empty();
-  for (let i = 0; i < data.results.length; i++) {
-    $('.games').append(
-      `<div class="results">
-        <h2>${data.results[i].name}</h2>
-        <h3>${data.results[i].real_name}</h3>
-        <img src=${data.results[i].image.screen_url}>
-        <p>${data.results[i].deck}</p>
-        <p>${data.results[i].birthday}</p>
-        <p>${data.results[i].first_appeared_in_game.name}</p>
-      </div>`);
+  try {
+    for (let i = 0; i < data.results.length; i++) {
+      $('.games').append(
+        `<div class="results">
+        <h2>${data.results[i].name || ""}</h2>
+        <h3>${data.results[i].real_name || ""}</h3>
+        <img src=${data.results[i].image.screen_url || ""}>
+        <p>${data.results[i].deck || ""}</p>
+        <p>${data.results[i].birthday || ""}</p>
+        <p>${data.results[i].first_appeared_in_game.name || ""}</p>
+        </div>`);
+      }
+      throw "No Results to Display";
   }
+  catch(err) {
+    noResults(err);
+  }
+}
+
+
+function noResults(err) {
+  $('.games').append(
+    `<div class="results">
+    <h2>${err}</h2>
+    </div>`
+  );
 }
 
 function likeGames() {
