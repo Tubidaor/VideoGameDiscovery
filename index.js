@@ -22,7 +22,7 @@ function formatDate(date) {
       month2 = "0" + month2;
     }
     if (month2 > 12) {
-      month2 = "02"
+      month2 = "01"
       year2 = year2 + 1;
     }
     if (day < 10) {
@@ -72,7 +72,7 @@ function display(responseJson) {
 $(document).ready(function gameSearch(){
   $('#gameTitle').submit(event => {
     event.preventDefault();
-    let gameTitle = $('.gameSearch').val()
+    let gameTitle = $('.game.Search').val()
     $.ajax({
       url: `https://www.giantbomb.com/api/search/`,
       type: "get",
@@ -126,7 +126,7 @@ function gamerID(data) {
   $(document).ready(function videoSearch(){
     $('#gameTitle').submit(event => {
       event.preventDefault();
-      let gameTitle = $('.gameSearch').val()
+      let gameTitle = $('.game.Search').val()
       $.ajax({
         url: `https://www.giantbomb.com/api/videos/`,
         type: "get",
@@ -180,7 +180,7 @@ $(document).ready(function characterSearch() {
   console.log("character form ran")
   $('#character').submit(event => {
     event.preventDefault();
-    let character = $('.chSearch').val();
+    let character = $('.ch.Search').val();
     console.log(character)
     $.ajax({
       url: `https://www.giantbomb.com/api/characters/?filter=name:${character}`,
@@ -204,15 +204,17 @@ function gamerCharacter(data) {
         <p>${data.results[i].deck}</p>
         <p>${data.results[i].birthday}</p>
         <p>${data.results[i].first_appeared_in_game.name}</p>
-      </div>`)
+      </div>`);
   }
 }
+
 function likeGames() {
   $('#simGames').submit(event => {
     event.preventDefault();
-    let gameslike = $('.simGames').val();
-    let array = gameslike.split(" ")
-    let array2 = []
+    let gameslike = $('.sim.Search').val();
+    console.log(gameslike)
+    let array = gameslike.split(" ");
+    let array2 = [];
     for (let i = 0; i < array.length; i++) {
       array2.push(array[i]);
     }
@@ -222,7 +224,7 @@ function likeGames() {
 }
 
 $(document).ready(function explore(){
-  $('.games').submit(event => {
+  $('#explore').submit(event => {
     event.preventDefault();
     $.ajax({
       url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
@@ -243,7 +245,7 @@ function random(data) {
           <img src=${data.results[i].image.original_url}>
           <p>${data.results[i].deck}</p>
           <p><a href="${data.results[i].site_detail_url} target="_blank">See more details about ${data.results[i].name} </a></p>
-        </div>`)
+        </div>`);
     }
   }
 }
