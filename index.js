@@ -136,12 +136,17 @@ function gamerID(data) {
     catch(err) {
       noResults(err);
     }
+  changeAttribute();
 }
 
-  
-  
-  
-  
+function changeAttribute() {
+  $(document).ready(function() {
+    $('figure').each(function() {
+      $('figure').attr('style', "");
+    });
+  });
+}
+
   $(document).ready(function videoSearch(){
     $('#gameTitle').submit(event => {
       event.preventDefault();
