@@ -35,13 +35,13 @@ function getRawg(gameslike) {
       "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.75 Safari/537.36"
     }) 
   }
-  const rawgUrl = `https://api.rawg.io/api/games/${gameslike}/suggested`
+  const rawgUrl = `https://api.rawg.io/api/games/${gameslike}/suggested?page_size=80`
   fetch(rawgUrl, options)
   .then(response => {
     if(response.ok) {
       return response.json();
     }
-    throw "No results to display. Please try again";
+    throw "No results to display. Please try again.";
   })
   .then(responseJson => display(responseJson))
   .catch(err => {
@@ -52,28 +52,28 @@ function getRawg(gameslike) {
 function display(responseJson) {
   $('.games').empty();
   $('.videos').empty();
+  let metastring = "Play time:"
   for (let i = 0; i < responseJson.results.length; i++) {
-    if (responseJson.results[i].clip !== null ) {
+    if (responseJson.results[i].clip === null ) {
+      responseJson.results[i].clip = "";
+    }
+    else {
     $('.games').append(
       `<div class="results">
-        <h2>${responseJson.results[i].name}</h2>
-        <img src="${responseJson.results[i].background_image}">
-        <p>${responseJson.results[i].metacritic}</p>
-        <p>${responseJson.results[i].playtime}</p>
+        <h2>${responseJson.results[i].name || ""}</h2>
+        <img src="${responseJson.results[i].background_image || ""}">
+        <p>Metacritic Score: ${responseJson.results[i].metacritic || "Not Available"}</p>
+        <p>${responseJson.results[i].short_description || ""}</p>
         <video controls>
-          <source src="${responseJson.results[i].clip.clips.full}">
+          <source src="${responseJson.results[i].clip.clips.full || ""}">
         </video>
-        <p>${responseJson.results[i].short_description}</p>
-        
-        
-        </div>`
-        )
+      </div>`
+      );
     }
-    }
-  console.log(responseJson.results[2].clip.clips.full)
+  }
 }
-
-
+    
+    
 $(document).ready(function gameSearch(){
   try {
   $('#gameTitle').submit(event => {
@@ -86,11 +86,11 @@ $(document).ready(function gameSearch(){
       dataType: "jsonp"
     });
   });
-}
-catch (err) {
-  console.log(err);
-  noResults(err);
-}
+  }
+  catch (err) {
+    console.log(err);
+    noResults(err);
+  }
 });
 
 function gamer(data) {
