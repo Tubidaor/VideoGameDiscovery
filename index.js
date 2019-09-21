@@ -67,6 +67,7 @@ function display(responseJson) {
 
 
 $(document).ready(function gameSearch(){
+  try {
   $('#gameTitle').submit(event => {
     event.preventDefault();
     let gameTitle = $('.game.Search').val()
@@ -77,47 +78,66 @@ $(document).ready(function gameSearch(){
       dataType: "jsonp"
     });
   });
+}
+catch (err) {
+  console.log(err);
+  noResults(err);
+}
 });
 
 function gamer(data) {
-  console.log(data.results[0].guid);
-  const gameID = data.results[0].guid
-  console.log(gameID);
-  $(document).ready(function() {
+  try {
+    if (data.results.length < 1) throw "Error";
+    console.log(typeof data + "try");
+    const gameID = data.results[0].guid
+    console.log(gameID);
+    $(document).ready(function() {
       $.ajax({
         url: `https://www.giantbomb.com/api/game/${gameID}/`,
         type: "get",
         data: {api_key : giantBombAPI, format : "jsonp", json_callback : "gamerID"},
-        dataType: "jsonp"
+        dataType: "jsonp", 
       });
-  });
+    });
+  }
+  catch(err) {
+    noResults(err);
+  }
 }
 
+
 function gamerID(data) {
-  function consoles(data){
-    let array = [];
-    for (let i = 0; i < data.results.platforms.length; i++){
-      array.push(data.results.platforms[i].name);
+  try {
+    function consoles(data){
+      let array = [];
+      for (let i = 0; i < data.results.platforms.length; i++){
+        array.push(data.results.platforms[i].name);
+      }
+      console.log(array);
+      return array;
     }
-    console.log(array);
-    return array;
-  }
-  $('.games').empty();
-  $('.games').append(
-    `<div class="results">
-      <h2>${data.results.name}</h2>
-      <img src=${data.results.image.original_url}>
-      <p>${data.results.deck}</p>
-      <p>${data.results.original_release_date}</p>
-      <p>${consoles(data)}</p>
-      <p>${data.results.developers[0].name}</p>
-      <div>
-        ${data.results.description}
+    $('.games').empty();
+    if (data.results.length < 1) throw "No results to display. Please try again.";
+    $('.games').append(
+      `<div class="results">
+        <h2>${data.results.name}</h2>
+        <img src=${data.results.image.original_url}>
+        <p>${data.results.deck}</p>
+        <p>${data.results.original_release_date}</p>
+        <p>${consoles(data)}</p>
+        <p>${data.results.developers[0].name}</p>
+        <div>
+          ${data.results.description}
+        </div>
       </div>
-    </div>
-    `
-    );
-  }
+      `
+      );
+    }
+    catch(err) {
+      noResults(err);
+    }
+}
+
   
   
   
@@ -137,8 +157,10 @@ function gamerID(data) {
   
   function videoAdd(data) {
     $('.videos').empty();
-    for (let i = 0; data.results.length; i++) {
-      if (data.results[i].name !== null){
+    try {
+      if (data.results.length < 1) throw "No Videos to display";
+        for (let i = 0; data.results.length; i++) {
+        if (data.results[i].name !== null){
           $('.videos').append(
             `<div class="vresults">
               <h2>${data.results[i].name}</h2>
@@ -147,7 +169,11 @@ function gamerID(data) {
               </frame>
             </div>`
           );
+        }
       }
+    }
+    catch (err) {
+      noResults(err);
     }
   }
   
@@ -225,6 +251,7 @@ function gamerCharacter(data) {
 
 
 function noResults(err) {
+  $('.games').empty();
   $('.games').append(
     `<div class="noResults">
     <div class="results">
