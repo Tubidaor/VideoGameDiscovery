@@ -37,8 +37,16 @@ function getRawg(gameslike) {
   }
   const rawgUrl = `https://api.rawg.io/api/games/${gameslike}/suggested`
   fetch(rawgUrl, options)
-  .then(response => response.json())
-  .then(responseJson => display(responseJson));
+  .then(response => {
+    if(response.ok) {
+      return response.json();
+    }
+    throw "No results to display. Please try again";
+  })
+  .then(responseJson => display(responseJson))
+  .catch(err => {
+    noResults(err);
+  });
 }
 
 function display(responseJson) {
@@ -87,7 +95,7 @@ catch (err) {
 
 function gamer(data) {
   try {
-    if (data.results.length < 1) throw "Error";
+    if (data.results.length < 1) throw "No results to display. Please try again.";
     console.log(typeof data + "try");
     const gameID = data.results[0].guid
     console.log(gameID);
@@ -160,27 +168,23 @@ function changeAttribute() {
     });
   });
   
-  function videoAdd(data) {
-    $('.videos').empty();
-    try {
-      if (data.results.length < 1) throw "No Videos to display";
-        for (let i = 0; data.results.length; i++) {
-        if (data.results[i].name !== null){
-          $('.videos').append(
-            `<div class="vresults">
-              <h2>${data.results[i].name}</h2>
-              <iframe
-                src="${data.results[i].embed_player}">
-              </frame>
-            </div>`
-          );
-        }
-      }
-    }
-    catch (err) {
-      noResults(err);
+function videoAdd(data) {
+  $('.videos').empty();
+  if (data.results.length < 1) throw "No Videos to display. Please try again.";
+  for (let i = 0; data.results.length; i++) {
+    if (data.results[i].name !== null){
+      $('.videos').append(
+        `<div class="vresults">
+          <h2>${data.results[i].name}</h2>
+          <iframe
+            src="${data.results[i].embed_player}">
+          </frame>
+        </div>`
+      );
     }
   }
+}
+  
   
 $(document).ready(randomStart());
   
