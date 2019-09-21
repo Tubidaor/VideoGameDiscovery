@@ -90,6 +90,7 @@ h1 {
 
 section {
   margin-bottom: 150px;
+  height: 100%;
 }
 
 
@@ -211,4 +212,69 @@ form {
 
 .explore.Button {
   margin-left: 12px;
+}
+
+.noResults {
+  height: 100vh;
+}
+
+.vresults {
+  position: relative;
+  width: 80%;
+  border-radius: 40px;
+  background-color: #e9e5e6;
+  margin-top: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 20px solid #f24000;
+  color: #0c1029;
+  z-index: 1;
+  padding: 30px;
+}
+
+.vresults:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: -44px;
+  left: -44px;
+  right: -44px;
+  bottom: -44px;
+  border: 24px solid #0c1029;
+  border-radius: 66px;
+}
+
+.vresults:after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: -68px;
+  left: -68px;
+  right: -68px;
+  bottom: -68px;
+  border: 24px solid #009ccc;
+  border-radius: 90px;
+}
+
+.vresults img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.vresults .videoDiv {
+  width: 100%;
+  border-radius: 20px;
+  height: 400px;
+  margin-bottom: 100px;
+}
+
+iframe {
+  width: 100%;
+  border-radius: 20px;
+  height: 400px;
+}
+
+.results figure img {
+  width:auto;
 }

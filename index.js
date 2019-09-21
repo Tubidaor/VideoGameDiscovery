@@ -104,14 +104,16 @@ function gamerID(data) {
   }
   $('.games').empty();
   $('.games').append(
-    `<h2>${data.results.name}</h2>
-    <img src=${data.results.image.original_url}>
-    <p>${data.results.deck}</p>
-    <p>${data.results.original_release_date}</p>
-    <p>${consoles(data)}</p>
-    <p>${data.results.developers[0].name}</p>
-    <div>
-      ${data.results.description}
+    `<div class="results">
+      <h2>${data.results.name}</h2>
+      <img src=${data.results.image.original_url}>
+      <p>${data.results.deck}</p>
+      <p>${data.results.original_release_date}</p>
+      <p>${consoles(data)}</p>
+      <p>${data.results.developers[0].name}</p>
+      <div>
+        ${data.results.description}
+      </div>
     </div>
     `
     );
@@ -138,10 +140,12 @@ function gamerID(data) {
     for (let i = 0; data.results.length; i++) {
       if (data.results[i].name !== null){
           $('.videos').append(
-            `<h2>${data.results[i].name}</h2>
-            <iframe
-              src="${data.results[i].embed_player}">
-            </frame>`
+            `<div class="vresults">
+              <h2>${data.results[i].name}</h2>
+              <iframe
+                src="${data.results[i].embed_player}">
+              </frame>
+            </div>`
           );
       }
     }
@@ -196,18 +200,23 @@ function gamerCharacter(data) {
   $('.games').empty();
   $('.videos').empty();
   try {
+    if (data.results.length < 1) throw "No Results to Display. Please try again."
     for (let i = 0; i < data.results.length; i++) {
       $('.games').append(
         `<div class="results">
         <h2>${data.results[i].name || ""}</h2>
         <h3>${data.results[i].real_name || ""}</h3>
-        <img src=${data.results[i].image.screen_url || ""}>
+        <img src=${data.results[i].image.original_url || ""}>
         <p>${data.results[i].deck || ""}</p>
         <p>${data.results[i].birthday || ""}</p>
-        <p>${data.results[i].first_appeared_in_game.name || ""}</p>
+        <p>First appeared in a game in:${data.results[i].first_appeared_in_game.name || "Data not available"}
+        <br/><br/>
+        <a href="${data.results[i].site_detail_url || ""}" target="_blank"> See more details about ${data.results[i].name}
+        </a>
+        </p>
         </div>`);
       }
-      throw "No Results to Display";
+    // throw "No Results to Display";
   }
   catch(err) {
     noResults(err);
@@ -217,8 +226,10 @@ function gamerCharacter(data) {
 
 function noResults(err) {
   $('.games').append(
-    `<div class="results">
+    `<div class="noResults">
+    <div class="results">
     <h2>${err}</h2>
+    </div>
     </div>`
   );
 }
