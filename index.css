@@ -9,6 +9,7 @@
 #18222e black */
 html {
   scroll-behavior: smooth;
+  position: relative;
 }
 body:before, body:after {
   content: "";
@@ -32,13 +33,9 @@ body {
   border-right: 30px solid #18222e; 
   margin: 0px;
   background-color: #e9e5e6;
-  width: 100%; 
+  width: 100%;
 }
 
-body.main {
-  width:1300px;
-  margin:0 auto;
-}
 h1 {
   text-align: center;
   margin-top: -30px;
