@@ -205,35 +205,36 @@ form {
   width: 80%;
   border-radius: 40px;
   background-color: #e9e5e6;
-  margin-top: 110px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
-  border: 20px solid #f24000;
+  border: 8px solid #f24000;
   color: #0c1029;
   z-index: 1;
   padding: 10px;
+  font-family: 'Turret Road', cursive;
 }
 .vresults:before {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -44px;
-  left: -44px;
-  right: -44px;
-  bottom: -44px;
-  border: 24px solid #0c1029;
-  border-radius: 66px;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  border: 8px solid #0c1029;
+  border-radius: 50px;
 }
 .vresults:after {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -68px;
-  left: -68px;
-  right: -68px;
-  bottom: -68px;
-  border: 24px solid #009ccc;
-  border-radius: 90px;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  border: 8px solid #009ccc;
+  border-radius: 58px;
 }
 .vresults img {
   width: 100%;
@@ -249,10 +250,10 @@ form {
 iframe {
   width: 100%;
   border-radius: 20px;
-  height: 400px;
+  height: auto;
 }
 .results figure img {
-  width: auto;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
