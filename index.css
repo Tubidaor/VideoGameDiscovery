@@ -46,7 +46,6 @@ h1 {
 }
 #character {
   margin-top: -25px;
-  margin-left: 16px;
 }
 .discover {
   width: 800px;
@@ -63,11 +62,7 @@ h1 {
   z-index: 1;
 }
 
-label {
-  font-size: 28px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
+
 .discover::before {
   content: " ";
   position: absolute;
@@ -174,14 +169,18 @@ a, .Button {
   border: solid 2px #009ccc;
   font-size: 24px;
   border-radius: 10px;
-  margin-right: -10px;
+}
+label {
+  font-size: 28px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .game.Search {
-  margin-right: -16px;
+  margin-right: 12px;
 }
 
 .sim.Search {
-  margin-right: -20px;
+  margin-right: 22px;
 }
 
 footer {
@@ -214,12 +213,11 @@ footer div {
   justify-content: center;
 }
 
-#simGames {
-  margin-left: -11px;
-}
-
 form {
   margin-top: 4px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
 }
 
 .explore.Button {
