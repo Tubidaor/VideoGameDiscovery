@@ -2,11 +2,7 @@
   box-sizing: border-box;
   
 }
-/* #f24000 orange red
-#0c1029 navy blue
-#009ccc baby blue
-#e9e5e6 white
-#18222e black */
+
 html {
   scroll-behavior: smooth;
 }
@@ -32,18 +28,15 @@ body {
   border-right: 30px solid #18222e; 
   margin: 0px;
   background-color: #e9e5e6;
-  width: 100%; 
+ 
 }
 
-body.main {
-  width:1300px;
-  margin:0 auto;
-}
 h1 {
   text-align: center;
-  margin-top: -30px;
-  font-size: 44px;
+  margin-top: 44px;
+  font-size: 40px;
 }
+
 #character {
   margin-top: -25px;
 }
@@ -90,13 +83,10 @@ h1 {
 section {
   margin-bottom: 150px;
   height: 100%;
-}
-
-
-section {
   margin-left:auto;
   margin-right: auto;
 }
+
 .games {
   width: 100%;
   margin-top: 20px;
@@ -297,6 +287,11 @@ iframe {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 800px) {
