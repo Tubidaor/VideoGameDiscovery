@@ -29,7 +29,6 @@ body {
   border-right: 30px solid #18222e; 
   margin: 0px;
   background-color: #e9e5e6;
-  width: 100%;
 }
 
 h1 {
@@ -163,12 +162,10 @@ label {
   margin-top: auto;
   margin-bottom: auto;
 }
-.game.Search {
-  margin-right: 12px;
-}
+
 
 .sim.Search {
-  margin-right: 22px;
+  margin-right: 6px;
 }
 
 footer {
@@ -290,11 +287,19 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
+.ch.Search {
+  margin-right: -6px;
+}
+
+
 
 @media (min-width: 800px) {
   main {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+  }
+  body {
+    width: 100%;
   }
 }
