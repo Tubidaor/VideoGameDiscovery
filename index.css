@@ -5,6 +5,7 @@
 
 html {
   scroll-behavior: smooth;
+  position: relative;
 }
 body:before, body:after {
   content: "";
@@ -28,7 +29,7 @@ body {
   border-right: 30px solid #18222e; 
   margin: 0px;
   background-color: #e9e5e6;
- 
+  width: 100%;
 }
 
 h1 {
@@ -37,9 +38,6 @@ h1 {
   font-size: 40px;
 }
 
-#character {
-  margin-top: -25px;
-}
 .discover {
   width: 555px;
   position: relative;
@@ -50,7 +48,7 @@ h1 {
   border: solid 16px #f24000;
   border-radius: 60px;
   font-weight: bolder;
-  padding: 30px;
+  padding: 10px;
   background-color: #e9e5e6;
   z-index: 1;
 }
@@ -106,7 +104,7 @@ section {
   border: 20px solid #f24000;
   color: #0c1029;
   z-index: 1;
-  padding: 30px;
+  padding: 10px;
 }
 
 .results:before {
@@ -149,7 +147,7 @@ a, .Button {
 }
 
 .Button {
-  font-size: 28px;
+  font-size: 16px;
   background-color: #f24000;
   border-radius: 10px;
   padding: 6px;
@@ -157,11 +155,11 @@ a, .Button {
 
 .Search {
   border: solid 2px #009ccc;
-  font-size: 24px;
+  font-size: 16px;
   border-radius: 10px;
 }
 label {
-  font-size: 28px;
+  font-size: 16px;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -198,7 +196,6 @@ footer div {
 }
 
 #explore {
-  margin-bottom: -20px;
   display: flex;
   justify-content: center;
 }
@@ -207,7 +204,7 @@ form {
   margin-top: 4px;
   margin-right: auto;
   margin-left: auto;
-  width: 90%;
+  width: 99%;
 }
 
 .explore.Button {
@@ -229,7 +226,7 @@ form {
   border: 20px solid #f24000;
   color: #0c1029;
   z-index: 1;
-  padding: 30px;
+  padding: 10px;
 }
 
 .vresults:before {
