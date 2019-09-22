@@ -2,11 +2,7 @@
   box-sizing: border-box;
   
 }
-/* #f24000 orange red
-#0c1029 navy blue
-#009ccc baby blue
-#e9e5e6 white
-#18222e black */
+
 html {
   scroll-behavior: smooth;
   position: relative;
@@ -33,28 +29,25 @@ body {
   border-right: 30px solid #18222e; 
   margin: 0px;
   background-color: #e9e5e6;
-  width: 100%;
 }
 
 h1 {
   text-align: center;
-  margin-top: -30px;
-  font-size: 44px;
+  margin-top: 44px;
+  font-size: 40px;
 }
-#character {
-  margin-top: -25px;
-}
+ 
 .discover {
-  width: 800px;
+  width: 555px;
   position: relative;
   color: #0c1029;
-  margin-top: 100px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-  border: solid 30px #f24000;
+  border: solid 16px #f24000;
   border-radius: 60px;
   font-weight: bolder;
-  padding: 30px;
+  padding: 10px;
   background-color: #e9e5e6;
   z-index: 1;
 }
@@ -64,36 +57,33 @@ h1 {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -44px;
-  left: -44px;
-  right: -44px;
-  bottom: -44px;
-  border: 24px solid #0c1029;
-  border-radius: 66px;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  border: 14px solid #0c1029;
+  border-radius: 77px;
 }
 
 .discover::after {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -68px;
-  left: -68px;
-  right: -68px;
-  bottom: -68px;
-  border: 24px solid #009ccc;
+  top: -44px;
+  left: -44px;
+  right: -44px;
+  bottom: -44px;
+  border: 14px solid #009ccc;
   border-radius: 90px;
 }
 
 section {
   margin-bottom: 150px;
   height: 100%;
-}
-
-
-section {
   margin-left:auto;
   margin-right: auto;
 }
+
 .games {
   width: 100%;
   margin-top: 20px;
@@ -113,7 +103,7 @@ section {
   border: 20px solid #f24000;
   color: #0c1029;
   z-index: 1;
-  padding: 30px;
+  padding: 10px;
 }
 
 .results:before {
@@ -156,7 +146,7 @@ a, .Button {
 }
 
 .Button {
-  font-size: 28px;
+  font-size: 16px;
   background-color: #f24000;
   border-radius: 10px;
   padding: 6px;
@@ -164,20 +154,18 @@ a, .Button {
 
 .Search {
   border: solid 2px #009ccc;
-  font-size: 24px;
+  font-size: 16px;
   border-radius: 10px;
 }
 label {
-  font-size: 28px;
+  font-size: 16px;
   margin-top: auto;
   margin-bottom: auto;
 }
-.game.Search {
-  margin-right: 12px;
-}
+
 
 .sim.Search {
-  margin-right: 22px;
+  margin-right: 6px;
 }
 
 footer {
@@ -205,7 +193,6 @@ footer div {
 }
 
 #explore {
-  margin-bottom: -20px;
   display: flex;
   justify-content: center;
 }
@@ -214,7 +201,7 @@ form {
   margin-top: 4px;
   margin-right: auto;
   margin-left: auto;
-  width: 90%;
+  width: 99%;
 }
 
 .explore.Button {
@@ -236,7 +223,7 @@ form {
   border: 20px solid #f24000;
   color: #0c1029;
   z-index: 1;
-  padding: 30px;
+  padding: 10px;
 }
 
 .vresults:before {
@@ -295,11 +282,24 @@ iframe {
   margin-right: auto;
   text-align: center;
 }
+main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ch.Search {
+  margin-right: -6px;
+}
+
+
 
 @media (min-width: 800px) {
   main {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+  }
+  body {
+    width: 100%;
   }
 }
