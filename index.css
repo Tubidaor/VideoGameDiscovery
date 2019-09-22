@@ -13,43 +13,44 @@ body:before, body:after {
   background: #18222e;
   left: 0;
   right: 0;
-  height: 30px;
+  height: 20px;
 }
 body:before {
   top: 0;
 }
 body:after {
   bottom: 0;
-  z-index: -1;
-  height: 50px;
+  z-index: 1;
+  height: 30px;
 }
 body {
   position: absolute;
-  border-left: 30px solid #18222e;
-  border-right: 30px solid #18222e; 
+  border-left: 20px solid #18222e;
+  border-right: 20px solid #18222e; 
   margin: 0px;
   background-color: #e9e5e6;
 }
 
 h1 {
   text-align: center;
-  margin-top: 44px;
-  font-size: 40px;
+  margin-top: 26px;
+  font-size: 28px;
+  font-family: 'Press Start 2P', cursive;
 }
  
 .discover {
-  width: 555px;
   position: relative;
   color: #0c1029;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  border: solid 16px #f24000;
-  border-radius: 60px;
+  border: solid 5px #f24000;
+  border-radius: 14px;
   font-weight: bolder;
-  padding: 10px;
+  padding: 2px;
   background-color: #e9e5e6;
   z-index: 1;
+  font-family: 'Audiowide', cursive;
 }
 
 
@@ -57,28 +58,30 @@ h1 {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -30px;
-  left: -30px;
-  right: -30px;
-  bottom: -30px;
-  border: 14px solid #0c1029;
-  border-radius: 77px;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 6px solid #0c1029;
+  border-radius: 20px;
+
 }
 
 .discover::after {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -44px;
-  left: -44px;
-  right: -44px;
-  bottom: -44px;
-  border: 14px solid #009ccc;
-  border-radius: 90px;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  border: 6px solid #009ccc;
+  border-radius: 26px;
 }
 
 section {
   margin-bottom: 150px;
+  margin-top: 40px;
   height: 100%;
   margin-left:auto;
   margin-right: auto;
@@ -97,37 +100,38 @@ section {
   width: 80%;
   border-radius: 40px;
   background-color: #e9e5e6;
-  margin-top: 110px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
-  border: 20px solid #f24000;
+  border: 8px solid #f24000;
   color: #0c1029;
   z-index: 1;
   padding: 10px;
+  font-family: 'Turret Road', cursive;
 }
 
 .results:before {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -44px;
-  left: -44px;
-  right: -44px;
-  bottom: -44px;
-  border: 24px solid #0c1029;
-  border-radius: 66px;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  border: 8px solid #0c1029;
+  border-radius: 50px;
 }
 
 .results:after {
   content: " ";
   position: absolute;
   z-index: -1;
-  top: -68px;
-  left: -68px;
-  right: -68px;
-  bottom: -68px;
-  border: 24px solid #009ccc;
-  border-radius: 90px;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  border: 8px solid #009ccc;
+  border-radius: 58px;
 }
 
 .results img {
@@ -145,17 +149,29 @@ a, .Button {
   cursor: pointer;
 }
 
+a {
+  color: #18222e;
+  font-family: 'Audiowide', cursive;
+}
+
+.scrollup a {
+  font-family: 'Monoton', cursive;
+}
+
+a:hover {
+  color: #009ccc;
+}
 .Button {
   font-size: 16px;
   background-color: #f24000;
   border-radius: 10px;
-  padding: 6px;
+  padding: 2px;
 }
 
 .Search {
   border: solid 2px #009ccc;
-  font-size: 16px;
   border-radius: 10px;
+  width: 90px;
 }
 label {
   font-size: 16px;
@@ -175,16 +191,19 @@ footer {
   justify-content: space-between;
   width: 100%;
   left: 0px;
+  z-index: 2;
 }
 
 footer div {
   background-color: #f24000;
-  width: 50px;
-  height: 50px;
-  color: #0c1029;
-  font-size: 40px;
-  font-weight: bolder;
+  height: 30px;
+  color: #18222e;
+  font-size: 26px;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  font-family: 'Monoton', cursive;
 }
 
 #character, #gameTitle, #simGames{
@@ -291,7 +310,14 @@ main {
   margin-right: -6px;
 }
 
-
+@media (min-width: 414px) {
+  .discover {
+    width: 414px;
+  }
+  .Search {
+    width: 170px;
+  }
+}
 
 @media (min-width: 800px) {
   main {
