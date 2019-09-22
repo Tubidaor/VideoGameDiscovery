@@ -1,8 +1,6 @@
 * {
-  box-sizing: border-box;
-  
+  box-sizing: border-box; 
 }
-
 html {
   scroll-behavior: smooth;
   position: relative;
@@ -30,14 +28,12 @@ body {
   margin: 0px;
   background-color: #e9e5e6;
 }
-
 h1 {
   text-align: center;
   margin-top: 26px;
   font-size: 28px;
   font-family: 'Press Start 2P', cursive;
 }
- 
 .discover {
   position: relative;
   color: #0c1029;
@@ -52,8 +48,6 @@ h1 {
   z-index: 1;
   font-family: 'Audiowide', cursive;
 }
-
-
 .discover::before {
   content: " ";
   position: absolute;
@@ -64,9 +58,7 @@ h1 {
   bottom: -10px;
   border: 6px solid #0c1029;
   border-radius: 20px;
-
 }
-
 .discover::after {
   content: " ";
   position: absolute;
@@ -78,7 +70,6 @@ h1 {
   border: 6px solid #009ccc;
   border-radius: 26px;
 }
-
 section {
   margin-bottom: 150px;
   margin-top: 40px;
@@ -86,15 +77,12 @@ section {
   margin-left:auto;
   margin-right: auto;
 }
-
 .games {
   width: 100%;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-
 }
-
 .results {
   position: relative;
   width: 80%;
@@ -109,7 +97,6 @@ section {
   padding: 10px;
   font-family: 'Turret Road', cursive;
 }
-
 .results:before {
   content: " ";
   position: absolute;
@@ -121,7 +108,6 @@ section {
   border: 8px solid #0c1029;
   border-radius: 50px;
 }
-
 .results:after {
   content: " ";
   position: absolute;
@@ -133,31 +119,25 @@ section {
   border: 8px solid #009ccc;
   border-radius: 58px;
 }
-
 .results img {
   width: 100%;
   height: auto;
   border-radius: 20px;
 }
-
 .results video {
   width: 100%;
   border-radius: 20px;
 }
-
 a, .Button {
   cursor: pointer;
 }
-
 a {
   color: #18222e;
   font-family: 'Audiowide', cursive;
 }
-
 .scrollup a {
   font-family: 'Monoton', cursive;
 }
-
 a:hover {
   color: #009ccc;
 }
@@ -167,7 +147,6 @@ a:hover {
   border-radius: 10px;
   padding: 2px;
 }
-
 .Search {
   border: solid 2px #009ccc;
   border-radius: 10px;
@@ -178,12 +157,9 @@ label {
   margin-top: auto;
   margin-bottom: auto;
 }
-
-
 .sim.Search {
   margin-right: 6px;
 }
-
 footer {
   position: fixed;
   bottom: 0px;
@@ -193,7 +169,6 @@ footer {
   left: 0px;
   z-index: 2;
 }
-
 footer div {
   background-color: #f24000;
   height: 30px;
@@ -205,32 +180,26 @@ footer div {
   border-radius: 6px;
   font-family: 'Monoton', cursive;
 }
-
 #character, #gameTitle, #simGames{
   display: flex;
   justify-content: space-between;
 }
-
 #explore {
   display: flex;
   justify-content: center;
 }
-
 form {
   margin-top: 4px;
   margin-right: auto;
   margin-left: auto;
   width: 99%;
 }
-
 .explore.Button {
   margin-left: 12px;
 }
-
 .noResults {
   height: 100vh;
 }
-
 .vresults {
   position: relative;
   width: 80%;
@@ -244,7 +213,6 @@ form {
   z-index: 1;
   padding: 10px;
 }
-
 .vresults:before {
   content: " ";
   position: absolute;
@@ -256,7 +224,6 @@ form {
   border: 24px solid #0c1029;
   border-radius: 66px;
 }
-
 .vresults:after {
   content: " ";
   position: absolute;
@@ -268,33 +235,28 @@ form {
   border: 24px solid #009ccc;
   border-radius: 90px;
 }
-
 .vresults img {
   width: 100%;
   height: auto;
   border-radius: 20px;
 }
-
 .vresults .videoDiv {
   width: 100%;
   border-radius: 20px;
   height: 400px;
   margin-bottom: 100px;
 }
-
 iframe {
   width: 100%;
   border-radius: 20px;
   height: 400px;
 }
-
 .results figure img {
   width: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
 .results figure {
   width: 100%;
   margin-left: auto;
@@ -309,7 +271,6 @@ main {
 .ch.Search {
   margin-right: -6px;
 }
-
 @media (min-width: 414px) {
   .discover {
     width: 414px;
@@ -318,7 +279,6 @@ main {
     width: 170px;
   }
 }
-
 @media (min-width: 800px) {
   main {
     width: 800px;

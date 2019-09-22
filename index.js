@@ -8,7 +8,6 @@ function randomDate(start, end) {
   return formatDate(random);
 }
 
-
 function formatDate(date) {
   let month = (date.getMonth() + 1);
   let month2 = (date.getMonth() + 1);
@@ -72,8 +71,7 @@ function display(responseJson) {
     }
   }
 }
-    
-    
+
 $(document).ready(function gameSearch(){
   try {
   $('#gameTitle').submit(event => {
@@ -112,7 +110,6 @@ function gamer(data) {
     noResults(err);
   }
 }
-
 
 function gamerID(data) {
   try {
@@ -155,18 +152,18 @@ function changeAttribute() {
   });
 }
 
-  $(document).ready(function videoSearch(){
-    $('#gameTitle').submit(event => {
-      event.preventDefault();
-      let gameTitle = $('.game.Search').val()
-      $.ajax({
-        url: `https://www.giantbomb.com/api/videos/`,
-        type: "get",
-        data: {api_key : giantBombAPI, format : "jsonp", filter: `name:${gameTitle}`, json_callback : "videoAdd"},
-        dataType: "jsonp"
-      });
+$(document).ready(function videoSearch(){
+  $('#gameTitle').submit(event => {
+    event.preventDefault();
+    let gameTitle = $('.game.Search').val()
+    $.ajax({
+      url: `https://www.giantbomb.com/api/videos/`,
+      type: "get",
+      data: {api_key : giantBombAPI, format : "jsonp", filter: `name:${gameTitle}`, json_callback : "videoAdd"},
+      dataType: "jsonp"
     });
   });
+});
   
 function videoAdd(data) {
   $('.videos').empty();
@@ -184,10 +181,9 @@ function videoAdd(data) {
     }
   }
 }
-  
-  
+
 $(document).ready(randomStart());
-  
+
 function randomStart(){
   $.ajax({
     url: `https://www.giantbomb.com/api/games/?filter=original_release_date:${randomDate(new Date("12/05/1983"), new Date())}`,
@@ -196,6 +192,7 @@ function randomStart(){
     dataType: "jsonp"
   });
 }
+
 function randomGames(data) {
   data.results[Math.random() * data.results.length]; 
   console.log(data.results[Math.random * data.results.length])
@@ -229,7 +226,7 @@ $(document).ready(function characterSearch() {
     });
   });
 });
-  
+
 function gamerCharacter(data) {
   // console.log(data.results[0].name);
   $('.games').empty();
@@ -257,7 +254,6 @@ function gamerCharacter(data) {
     noResults(err);
   }
 }
-
 
 function noResults(err) {
   $('.games').empty();
