@@ -105,7 +105,8 @@ function likeGames() {
   $('#simGames').submit(event => {
     event.preventDefault();
     let gameslike = $('.sim.Search').val();
-    let array = gameslike.split('');
+    console.log(gameslike)
+    let array = gameslike.split(" ");
     let array2 = [];
     for (let i = 0; i < array.length; i++) {
       array2.push(array[i]);
