@@ -105,7 +105,6 @@ function likeGames() {
   $('#simGames').submit(event => {
     event.preventDefault();
     let gameslike = $('.sim.Search').val();
-    console.log(gameslike)
     let array = gameslike.split(" ");
     let array2 = [];
     for (let i = 0; i < array.length; i++) {
@@ -162,7 +161,7 @@ function getGameById(data) {
     function consoles(data){
       let array = [];
       for (let i = 0; i < data.results.platforms.length; i++){
-        array.push(data.results.platforms[i].name);
+        array.push(' ' + data.results.platforms[i].name);
       }
       return array;
     }
@@ -170,14 +169,14 @@ function getGameById(data) {
     if (data.results.length < 1) throw 'No results to display. Please try again.';
     $('.games').append(
       `<div class="results">
-        <h2>${data.results.name}</h2>
-        <img src=${data.results.image.original_url}>
-        <p>${data.results.deck}</p>
-        <p>${data.results.original_release_date}</p>
-        <p>${consoles(data)}</p>
-        <p>${data.results.developers[0].name}</p>
+        <h2>${data.results.name || ''}</h2>
+        <img src=${data.results.image.original_url || ''}>
+        <p>${data.results.deck || ''}</p>
+        <p>${data.results.original_release_date || ''}</p>
+        <p>${consoles(data) || ''}</p>
+        <p>${data.results.developers[0].name || ''}</p>
         <div>
-          ${data.results.description}
+          ${data.results.description || ''}
         </div>
       </div>`
       );
@@ -192,42 +191,10 @@ function changeAttribute() {
     $('figure').each(function() {
       $('figure').attr('style', '');
     });
-  });
-}
-
-$(document).ready(function videoSearch(){
-  $('#gameTitle').submit(event => {
-    event.preventDefault();
-    let gameTitle = $('.game.Search').val();
-    $.ajax({
-      url: `https://www.giantbomb.com/api/videos/`,
-      type: 'get',
-      data: {
-        api_key : giantBombAPI,
-        format : 'jsonp',
-        filter: `name:${gameTitle}`,
-        json_callback : 'videoAdd'
-      },
-      dataType: 'jsonp'
+    $('.js-lazy-load-image').each(function() {
+      $('.js-lazy-load-image').attr('src','')
     });
   });
-});
-  
-function videoAdd(data) {
-$('.videos').empty();
-if (data.results.length < 1) throw 'No Videos to display. Please try again.';
-  for (let i = 0; data.results.length; i++) {
-    if (data.results[i].name !== null){
-      $('.videos').append(
-        `<div class="vresults">
-          <h2>${data.results[i].name}</h2>
-          <iframe
-            src="${data.results[i].embed_player}">
-          </frame>
-        </div>`
-      );
-    }
-  }
 }
 
 $(document).ready(function characterSearch() {
@@ -298,5 +265,6 @@ $(document).ready(function exploreGames(){
     });
   });
 });
+
 
 $(likeGames);
