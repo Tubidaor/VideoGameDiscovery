@@ -13,7 +13,9 @@ function randomStart(){
   });
 }
 
-$(document).ready(randomStart());
+$(document).ready(
+  randomStart()
+);
 
 function randomGames(data) {
   data.results[Math.random() * data.results.length]; 
@@ -61,6 +63,7 @@ function renderGameByTitle(data) {
   try {
     if (data.results.length < 1) throw 'No results to display. Please try again.';
     const gameID = data.results[0].guid;
+    console.log(gameID);
     $(document).ready(function() {
       $.ajax({
         url: `https://www.giantbomb.com/api/game/${gameID}/`,
@@ -76,10 +79,10 @@ function renderGameByTitle(data) {
   } catch(err) {
     noResults(err);
   }
-}
+  } 
+
 
 $(document).ready(function gameSearch(){
-  try {
     $('#gameTitle').submit(event => {
       event.preventDefault();
       let gameTitle = $('.game.Search').val();
@@ -95,10 +98,7 @@ $(document).ready(function gameSearch(){
         },
         dataType: 'jsonp'
       });
-    });
-  } catch (err) {
-    noResults(err);
-  }
+    }); 
 });
 
 function likeGames() {
@@ -164,33 +164,51 @@ function renderSimGames(responseJson) {
   }
 }
 
+function consoles(data){
+  let array = [];
+  for (let i = 0; i < data.results.platforms.length; i++){
+    array.push(' ' + data.results.platforms[i].name);
+  }
+  return array;
+}
+
 function getGameById(data) {
-  try {
-    function consoles(data){
-      let array = [];
-      for (let i = 0; i < data.results.platforms.length; i++){
-        array.push(' ' + data.results.platforms[i].name);
-      }
-      return array;
-    }
     $('.games').empty();
-    if (data.results.length < 1) throw 'No results to display. Please try again.';
-    $('.games').append(
-      `<div class="results">
-        <h2>${data.results.name || ''}</h2>
-        <img src=${data.results.image.original_url || ''}>
-        <p>${data.results.deck || ''}</p>
-        <p>${data.results.original_release_date || ''}</p>
-        <p>${consoles(data) || ''}</p>
-        <p>${data.results.developers[0].name || ''}</p>
-        <div>
-          ${data.results.description || ''}
-        </div>
-      </div>`
+    console.log(data);
+    try {
+    if (data.results.length < 1) throw 'No results to display. Please try again.'
+    gameMakers = data.results.developers
+    if (gameMakers === null) {
+      $('.games').append(
+        `<div class="results">
+          <h2>${data.results.name || ''}</h2>
+          <img src=${data.results.image.original_url || ''}>
+          <p>${data.results.deck || ''}</p>
+          <p>${data.results.original_release_date || ''}</p>
+          <p>${consoles(data) || ''}</p>
+          <div>
+            ${data.results.description || ''}
+          </div>
+        </div>`
       );
-    } catch(err) {
-      noResults(err);
+    } else {
+      $('.games').append(
+        `<div class="results">
+          <h2>${data.results.name || ''}</h2>
+          <img src=${data.results.image.original_url || ''}>
+          <p>${data.results.deck || ''}</p>
+          <p>${data.results.original_release_date || ''}</p>
+          <p>${consoles(data) || ''}</p>
+          <p>${data.results.developers.name || ''}</p>
+          <div>
+            ${data.results.description || ''}
+          </div>
+        </div>`
+      );
     }
+  } catch(err) {
+    noResults(err);
+  }
   changeAttribute();
 }
 
