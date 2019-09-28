@@ -111,6 +111,7 @@ function likeGames() {
       array2.push(array[i]);
     }
     gameslike = array2.join('-');
+    console.log(gameslike)
     getRawgAPI(gameslike);
   });
 }
@@ -139,7 +140,14 @@ function renderSimGames(responseJson) {
   $('.videos').empty();
   for (let i = 0; i < responseJson.results.length; i++) {
     if (responseJson.results[i].clip === null ) {
-      responseJson.results[i].clip = '';
+      $('.games').append(
+        `<div class="results">
+          <h2>${responseJson.results[i].name || ''}</h2>
+          <img src="${responseJson.results[i].background_image || ''}">
+          <p>Metacritic Score: ${responseJson.results[i].metacritic || 'Not Available'}</p>
+          <p>${responseJson.results[i].short_description || ''}</p>
+        </div>`
+      );
     } else {
       $('.games').append(
         `<div class="results">
