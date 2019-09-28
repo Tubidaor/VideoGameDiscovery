@@ -22,7 +22,7 @@ function randomGames(data) {
       } else {
       $('.games').append(
         `<div class="results">
-          <img src=${data.results[i].image.original_url}>
+          <img src=${data.results[i].image.original_url} alt="Video game cover art for ${data.results[i].name}">
           <p>${data.results[i].deck || ''}</p>
           <p><a href="${data.results[i].site_detail_url || ''}" target="_blank"> See more details about ${data.results[i].name}</a> </p>
         </div>`
@@ -136,7 +136,7 @@ function renderSimGames(responseJson) {
       $('.games').append(
         `<div class="results">
           <h2>${responseJson.results[i].name || ''}</h2>
-          <img src="${responseJson.results[i].background_image || ''}">
+          <img src="${responseJson.results[i].background_image || ''}" alt="Video game cover art for ${responseJson.results[i].name || ''}">
           <p>Metacritic Score: ${responseJson.results[i].metacritic || 'Not Available'}</p>
           <p>${responseJson.results[i].short_description || ''}</p>
         </div>`
@@ -145,7 +145,7 @@ function renderSimGames(responseJson) {
       $('.games').append(
         `<div class="results">
           <h2>${responseJson.results[i].name || ''}</h2>
-          <img src="${responseJson.results[i].background_image || ''}">
+          <img src="${responseJson.results[i].background_image || ''}" alt="Video game cover art for ${responseJson.results[i].name || ''}">
           <p>Metacritic Score: ${responseJson.results[i].metacritic || 'Not Available'}</p>
           <p>${responseJson.results[i].short_description || ''}</p>
           <video controls>
@@ -174,7 +174,7 @@ function getGameById(data) {
       $('.games').append(
         `<div class="results">
           <h2>${data.results.name || ''}</h2>
-          <img src=${data.results.image.original_url || ''}>
+          <img src=${data.results.image.original_url || ''} alt="Video game cover art for ${data.results.name}">
           <p>${data.results.deck || ''}</p>
           <p>${data.results.original_release_date || ''}</p>
           <p>${consoles(data) || ''}</p>
@@ -187,7 +187,7 @@ function getGameById(data) {
       $('.games').append(
         `<div class="results">
           <h2>${data.results.name || ''}</h2>
-          <img src=${data.results.image.original_url || ''}>
+          <img src=${data.results.image.original_url || ''} alt="Video game cover art for ${data.results.name}">
           <p>${data.results.deck || ''}</p>
           <p>${data.results.original_release_date || ''}</p>
           <p>${consoles(data) || ''}</p>
@@ -242,7 +242,7 @@ function renderByCharacter(data) {
         `<div class="results">
           <h2>${data.results[i].name || ''}</h2>
           <h3>${data.results[i].real_name || ''}</h3>
-          <img src=${data.results[i].image.original_url || ''}>
+          <img src=${data.results[i].image.original_url || ''} alt="Video game cover art for ${data.results[i].name}">
           <p>${data.results[i].deck || ''}</p>
           <p>${data.results[i].birthday || ''}</p>
           <p>First appeared in a game in:${data.results[i].first_appeared_in_game.name || 'Data not available'}
