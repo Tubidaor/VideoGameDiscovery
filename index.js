@@ -13,10 +13,6 @@ function randomStart(){
   });
 }
 
-$(document).ready(
-  randomStart()
-);
-
 function randomGames(data) {
   data.results[Math.random() * data.results.length]; 
     $('.games').empty();
@@ -63,7 +59,6 @@ function renderGameByTitle(data) {
   try {
     if (data.results.length < 1) throw 'No results to display. Please try again.';
     const gameID = data.results[0].guid;
-    console.log(gameID);
     $(document).ready(function() {
       $.ajax({
         url: `https://www.giantbomb.com/api/game/${gameID}/`,
@@ -79,27 +74,26 @@ function renderGameByTitle(data) {
   } catch(err) {
     noResults(err);
   }
-  } 
+} 
 
-
-$(document).ready(function gameSearch(){
-    $('#gameTitle').submit(event => {
-      event.preventDefault();
-      let gameTitle = $('.game.Search').val();
-      $.ajax({
-        url: `https://www.giantbomb.com/api/search/`,
-        type: 'get',
-        data: {
-          api_key : giantBombAPI,
-          format : 'jsonp',
-          resources: 'game',
-          query: `${gameTitle}`,
-          json_callback : 'renderGameByTitle'
-        },
-        dataType: 'jsonp'
-      });
-    }); 
-});
+function gameSearch(){
+  $('#gameTitle').submit(event => {
+    event.preventDefault();
+    let gameTitle = $('.game.Search').val();
+    $.ajax({
+      url: `https://www.giantbomb.com/api/search/`,
+      type: 'get',
+      data: {
+        api_key : giantBombAPI,
+        format : 'jsonp',
+        resources: 'game',
+        query: `${gameTitle}`,
+        json_callback : 'renderGameByTitle'
+      },
+      dataType: 'jsonp'
+    });
+  }); 
+}
 
 function likeGames() {
   $('#simGames').submit(event => {
@@ -111,7 +105,6 @@ function likeGames() {
       array2.push(array[i]);
     }
     gameslike = array2.join('-');
-    console.log(gameslike)
     getRawgAPI(gameslike);
   });
 }
@@ -173,9 +166,8 @@ function consoles(data){
 }
 
 function getGameById(data) {
-    $('.games').empty();
-    console.log(data);
-    try {
+  $('.games').empty();
+  try {
     if (data.results.length < 1) throw 'No results to display. Please try again.'
     gameMakers = data.results.developers
     if (gameMakers === null) {
@@ -223,7 +215,7 @@ function changeAttribute() {
   });
 }
 
-$(document).ready(function characterSearch() {
+function characterSearch() {
   $('#character').submit(event => {
     event.preventDefault();
     let character = $('.ch.Search').val();
@@ -238,7 +230,7 @@ $(document).ready(function characterSearch() {
       dataType: 'jsonp',
     });
   });
-});
+}
 
 function renderByCharacter(data) {
   $('.games').empty();
@@ -276,7 +268,7 @@ function noResults(err) {
   );
 }
 
-$(document).ready(function exploreGames(){
+function exploreGames(){
   $('#explore').submit(event => {
     event.preventDefault();
     $.ajax({
@@ -290,7 +282,14 @@ $(document).ready(function exploreGames(){
       dataType: 'jsonp'
     });
   });
-});
+}
 
+$(document).ready(function() {
+  randomStart();
+  gameSearch();
+  characterSearch();
+  exploreGames();
+  }
+);
 
 $(likeGames);
