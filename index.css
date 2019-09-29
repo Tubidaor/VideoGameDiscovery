@@ -272,6 +272,11 @@ main {
 .ch.Search {
   margin-right: -6px;
 }
+h2 {
+  color:  #e9e5e6;
+  margin-right: auto;
+  margin-left: auto;
+}
 @media (min-width: 414px) {
   .discover {
     width: 414px;
